@@ -1,0 +1,252 @@
+
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Events a Wedding Category Bootstrap Responsive website Template | Contact :: w3layouts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Events Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+<link href={% static "css/bootstrap.css"%} type="text/css" rel="stylesheet" media="all">
+<link href={% static "css/style.css"%} type="text/css" rel="stylesheet" media="all">
+<link href={% static "css/font-awesome.css"%} rel="stylesheet">		<!-- font-awesome icons -->
+<!-- //Custom Theme files -->
+<!-- js -->
+<script src={% static "js/jquery-2.2.3.min.js"%}></script>
+<!-- //js -->
+<!-- web-fonts -->
+<link href="//fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<!-- //web-fonts -->
+    <script type="text/javascript">
+        function myajax() {
+             var date =  document.getElementById("d").value;
+             var end_date = document.getElementById("ed").value;
+             var start_time = document.getElementById("st").value;
+             var end_time = document.getElementById("et").value;
+
+             var url ="client_book_venue?date="+date+"&enddate="+end_date+"&starttime="+start_time+"&endtime="+end_time;
+             alert(url);
+
+             var xmlHttp = new XMLHttpRequest();
+
+                xmlHttp.onreadystatechange = function ()
+                {
+                /*xmlHttp.readyState == 4 bcz we need data in xmlHttp format
+                *and for this process there are 4 steps
+                *1.request send 2.acknowledgement for request
+                *3.data procession 4.response
+                */
+
+                    if(xmlHttp.readyState == 4)
+                    {
+                        alert(xmlHttp.responseText)
+                        document.getElementById('myid').innerHTML = xmlHttp.responseText;
+                    }
+                };
+            xmlHttp.open('POST',url,true); //get=method, filename , true = asynchronus process, false=synchronous process
+            xmlHttp.send();
+
+        }
+    </script>
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+	<!-- banner -->
+    {% include "header_client.html" %}
+<!-- contact -->
+<script>
+    function validate_start_date() {
+        var date = document.getElementById('startdate').value;
+        var date1 = document.getElementById('enddate').value;
+        var d = new Date(date);
+        var d1 = new Date(date1);
+        var cur_date = new Date();
+
+        if (d < cur_date) {
+            var msg = "*Start Date is not valid ";
+            document.getElementById('dterror').style.color = "red";
+            document.getElementById('dterror').innerHTML = msg;
+            document.getElementById('mysubmit').disabled = true;
+        } else {
+            document.getElementById('dterror').innerHTML = "";
+            document.getElementById('mysubmit').disabled = false;
+        }
+    }
+    function validate_end_date() {
+        var date = document.getElementById('startdate').value;
+        var date1 = document.getElementById('enddate').value;
+        var d = new Date(date);
+        var d1 = new Date(date1);
+        var cur_date = new Date();
+
+        if (d1 < cur_date )
+        {   var msg = "* End Date is not Valid ";
+            document.getElementById('msg').style.color ="red";
+            document.getElementById('msg').innerHTML = msg;
+            document.getElementById('mysubmit').disabled = true;
+        }
+        else if (d > d1)
+        {
+            var msg = "* End Date can not be smaller than start date";
+            document.getElementById('msg').style.color ="red";
+            document.getElementById('msg').innerHTML = msg;
+            document.getElementById('mysubmit').disabled = true;
+        }
+        else {
+            document.getElementById('msg').innerHTML = "";
+            document.getElementById('mysubmit').disabled = false;
+        }
+
+    }
+
+
+
+
+
+</script>
+
+        <section class="about_agile" style="margin-top: 20px>
+		<div class="container">
+            <h3 class="heading-agileinfo white-w3ls" style="margin-top: 30px">Venue Booking<span class="black-w3ls">Here You can Book Venue for Your Event</span></h3>
+			<div class="about-grids">
+
+				<div class="abt-rt-grid">
+					<div class="w3ls-grid-head text-center">
+						<h3>Venue Booking Form </h3>
+					</div>
+					<div class="abt-form text-center">
+						<form action="client_book_venue" method="post" name="myform"  >
+							<div class="col-sm-4 col-xs-4 w3ls-lt-form">
+								<div class="w3ls-pr">
+                                    <h4>Vanue name</h4>
+                                    <input type="text" name="name" placeholder="Name" value="{{ data.0 }}" readonly>
+                                    <h4>Event Start Date</h4>
+                                    <input type="date" name="date" id="startdate" onchange="validate_start_date()" required="required">
+                                    <div id="dterror"></div>
+                                    <h4>Person Capacity</h4>
+                                    <input type="text" name="capacity" placeholder="capacity" value="{{ data.3 }}" readonly>
+								</div>
+							</div>
+
+							<div class="col-sm-4 col-xs-4 w3ls-lt-form">
+								<div class="w3ls-pr">
+                                    <h4>Vanue Address</h4>
+									<input type="text" name="address" placeholder="Address" value="{{ data.1 }}" readonly>
+                                    <h4>Event End Date</h4>
+                                    <input type="date" name="enddate" id="enddate" onkeyup="validate_end_date()" required="required">
+                                    <div id="msg"></div>
+                                    <h4>Start Time</h4>
+                                    <input type="time" name="starttime" id="st" required="required">
+								</div>
+							</div>
+							<div class="col-sm-4 col-xs-4 w3ls-lt-form">
+								<div class="w3ls-pr">
+                                    <h4>Owner Mobile Number</h4>
+									<input type="tel" name="mobile" placeholder="Mobile number" value="{{ data.5 }}" required="required" readonly>
+                                    <h4>Price per Hour</h4>
+                                    <input type="text" name="price" placeholder="price per Hour" value="{{ data.4 }}" readonly>
+                                    <h4>End Time</h4>
+                                    <input type="time" name="endtime" id="et" required="required">
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<input type="submit" value="Book Now"  id="mysubmit"  >
+
+                            {% if msg %}
+                                <h4 id="myid">Message : {{ msg }}</h4>
+                            {% endif %}
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+			<div class="clearfix"> </div>
+
+	</div>
+
+</div>
+<!-- //contact -->
+<!-- footer-top -->
+	{% include "commonfootertop.html" %}
+    <!-- /footer-top -->
+
+<!-- footer -->
+			{% include "commonfooterdown.html" %}
+<!-- //footer -->
+<!-- bootstrap-modal-pop-up -->
+	<div class="modal video-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					Events
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				</div>
+					<div class="modal-body">
+						<img src={% static "images/g8.jpg"%} alt=" " class="img-responsive" />
+						<p>Ut enim ad minima veniam, quis nostrum
+							exercitationem ullam corporis suscipit laboriosam,
+							nisi ut aliquid ex ea commodi consequatur? Quis autem
+							vel eum iure reprehenderit qui in ea voluptate velit
+							esse quam nihil molestiae consequatur, vel illum qui
+							dolorem eum fugiat quo voluptas nulla pariatur.
+							<i>" Quis autem vel eum iure reprehenderit qui in ea voluptate velit
+								esse quam nihil molestiae consequatur.</i></p>
+					</div>
+			</div>
+		</div>
+	</div>
+<!-- //bootstrap-modal-pop-up -->
+<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+<script src={% static "js/jquery-2.2.3.min.js"%}></script>
+
+<!-- skills -->
+<script type="text/javascript" src={% static "js/move-top.js"%}></script>
+<script type="text/javascript" src={% static "js/easing.js"%}></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+
+<!-- start-smoth-scrolling -->
+	<script src={% static "js/bootstrap.js"%}></script>
+<!-- //for bootstrap working -->
+<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear'
+				};
+			*/
+
+			$().UItoTop({ easingType: 'easeOutQuart' });
+
+			});
+
+
+	</script>
+<!-- //here ends scrolling icon -->
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<html>
+  <head onload="submitPayuForm()">
+  <script type="text/javascript">
+    var hash = "{{ hashh }}";
+    function submitPayuForm() {
+      if(hash =='') {
+        return;
+      }
+      var payuForm = document.forms.payuForm;
+      payuForm.submit();
+    }
+  </script>
+  </head>
+  <body>
+    <h2>PayU Form For Payment</h2>
+    <br/>
+    {% if error %}
+
+      <span style="color:red">Please fill all mandatory fields.</span>
+      <br/>
+      <br/>
+      {% endif %}
+
+      <form action="Home" method="post" name="payuForm">{% csrf_token %}
+      <input type="hidden" name="key" value="{{ MERCHANT_KEY }}" />
+      <input type="hidden" name="hash_string" value="{{ hash_string }}" />
+      <input type="hidden" name="hash" value="{{ hashh }}"/>
+       <input type="hidden" name="posted" value="{{ posted }}"/>
+      <input type="hidden" name="txnid" value="{{ txnid }}" />
+      <table>
+        <tr>
+          <td><b>Mandatory Parameters</b></td>
+        </tr>
+        <tr>
+
+           {% if vanuecost %}
+            <td>Venue Cost: </td>
+            <td><input name="amount" value="{{ vanuecost }}" required readonly/></td>
+            {% else %}
+            <td>Catering Cost: </td>
+            <td><input name="amount" value="{{ catering_cost }}" required readonly/></td>
+            {% endif %}
+          <td>First Name: </td>
+          <td><input name="firstname" id="firstname" value="{{ posted.firstname|default:'' }}" required/></td>
+        </tr>
+        <tr>
+          <td>Email: </td>
+          <td><input name="email" id="email" value="{{ posted.email|default:'' }}" required/></td>
+          <td>Phone: </td>
+          <td><input name="phone" value="{{ posted.phone|default:'' }}" required/></td>
+        </tr>
+        <tr>
+          <td>Message: </td>
+          <td colspan="3"><textarea name="productinfo">{{ posted.productinfo|default:'' }}</textarea></td>
+        </tr>
+        <tr>
+          <td>Success URI: </td>
+          <td colspan="3"><input name="surl" value="{{ surl }}" size="64" readonly /></td>
+        </tr>
+        <tr>
+          <td>Failure URI: </td>
+          <td colspan="3"><input name="furl" value="{{ furl }}" size="64" readonly/></td>
+        </tr>
+
+        <tr>
+          <td colspan="3"><input type="hidden" name="service_provider" value="payu_paisa" size="64" /></td>
+        </tr>
+           </tr>
+        <tr>
+     <td colspan="4"><input type="submit" value="Submit" /></td>
+
+
+        </tr>
+
+      </table>
+    </form>
+  </body>
+</html>
+

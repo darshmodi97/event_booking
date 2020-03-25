@@ -1,0 +1,282 @@
+
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Events a Wedding Category Bootstrap Responsive website Template | Home :: w3layouts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Events Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+<link href={% static "css/bootstrap.css"%} type="text/css" rel="stylesheet" media="all">
+<link href={% static "css/style.css"%} type="text/css" rel="stylesheet" media="all">
+<link href={% static "css/font-awesome.css"%} rel="stylesheet">		<!-- font-awesome icons -->
+<!-- //Custom Theme files -->
+<!-- js -->
+<script src={%static "js/jquery-2.2.3.min.js"%}></script>
+<!-- //js -->
+<!-- web-fonts -->
+<link href="//fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<!-- //web-fonts -->
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+	<!-- banner -->
+	<div id="home" class="w3ls-banner">
+
+		<!-- banner-text -->
+
+	<!-- //banner -->
+			<!-- header -->
+     {% include "header_landowner.html" %}
+     	<!-- //header -->
+		<!-- ser_agile -->
+		<div class="ser_agile">
+			<div class="container">
+			<h2 class="heading-agileinfo" style="margin-top: 40px">Welcome {{ request.session.name }}<span>Events is a professionally managed Event</span></h2>
+			<p>Masagni dolores eoquie int Basmodi temporant, ut laboreas dolore magnam aliquam kuytase uaeraquis autem vel eum iure reprehend.Unicmquam eius, Basmodi temurer sehsMunim.Masagni dolores eoquie int Basmodi temporant, ut laboreas dolore magnam aliquam kuytase uaeraquis autem vel eum iure reprehend.</p>
+			<div class="ser_w3l">
+			  <a href="land_birthday"><div class="outer-wrapper">
+				<div class="inner-wrapper">
+				  <div class="icon-wrapper">
+					<i class="fa fa-birthday-cake" aria-hidden="true"></i>
+				  </div>
+				  <div class="content-wrapper">
+					<h4>Birthday</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, magni.</p>
+				  </div>
+				</div>
+              </div></a>
+			  <a href="land_sangeet"><div class="outer-wrapper">
+				<div class="inner-wrapper">
+				  <div class="icon-wrapper">
+					<i class="fa fa-headphones" aria-hidden="true"></i>
+				  </div>
+				  <div class="content-wrapper">
+					<h4>Sangeet</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, magni.</p>
+				  </div>
+				</div>
+              </div></a>
+			  <a href="land_wedding"><div class="outer-wrapper">
+			  <div class="inner-wrapper">
+				  <div class="icon-wrapper">
+					<i class="fa fa-globe" aria-hidden="true"></i>
+				  </div>
+				  <div class="content-wrapper">
+					<h4>Weddings</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, magni.</p>
+				  </div>
+				</div>
+              </div></a>
+              <a href="land_party"><div class="outer-wrapper">
+				<div class="inner-wrapper">
+				  <div class="icon-wrapper">
+                      <i><img src="../templates/images/party.png" style="border-radius: 50%"></img></i>
+				  </div>
+				  <div class="content-wrapper">
+					<h4>New Year Party</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, magni.</p>
+				  </div>
+				</div>
+              </div></a>
+			  <div class="clearfix"></div>
+			  </div>
+			</div>
+		</div>
+	<!-- //ser_agile -->
+<!-- Stats -->
+{#	<div class="stats-agileits">#}
+{#	<div class="container">#}
+{#		<h3 class="heading-agileinfo white-w3ls">We Have Something To Be Proud Of<span class="black-w3ls">Events is a professionally managed Event</span></h3>#}
+{#	</div>#}
+{#		<div class="stats-info agileits w3layouts">#}
+{#		<div class="container">#}
+{#			<div class="col-md-4 col-sm-4agileits w3layouts stats-grid stats-grid-1">#}
+{#				<i class="fa fa-users" aria-hidden="true"></i>#}
+{#				<div class="numscroller agileits-w3layouts" data-slno='1' data-min='0' data-max='{{ request.session.happy_client }}' data-delay='3' data-increment="2">{{ request.session.happy_client }}</div>#}
+{#				<div class="stat-info-w3ls">#}
+{#					<h4 class="agileits w3layouts">Happy Clients</h4>#}
+{#				</div>#}
+{#			</div>#}
+{#			<div class="col-md-4 col-sm-4 agileits w3layouts stats-grid stats-grid-2">#}
+{#				<i class="fa fa-birthday-cake" aria-hidden="true"></i>#}
+{#				<div class="numscroller agileits-w3layouts" data-slno='1' data-min='0' data-max='{{ request.session.payment_id }}' data-delay='1' data-increment="2">{{ request.session.payment_id }}</div>#}
+{#				<div class="stat-info-w3ls">#}
+{#					<h4 class="agileits w3layouts">Events</h4>#}
+{#				</div>#}
+{#			</div>#}
+{#			<div class="col-md-4 col-sm-4 stats-grid agileits w3layouts stats-grid-3">#}
+{#			<i class="fa fa-rupee" aria-hidden="true"></i>#}
+{#				<div class="numscroller agileits-w3layouts" data-slno='1' data-min='0' data-max='{{ request.session.earning }}' data-delay='3' data-increment="30">{{ request.session.earning }}</div>#}
+{#				<div class="stat-info-w3ls">#}
+{#					<h4 class="agileits w3layouts">Earning</h4>#}
+{#				</div>#}
+{#			</div>#}
+{#			<div class="clearfix"></div>#}
+{#			</div>#}
+{#		</div>#}
+{#	</div>#}
+	<!-- //Stats -->
+
+	<!-- showcase_w3layouts -->
+
+<!-- //showcase_w3layouts -->
+
+
+<!--//testimonials-->
+
+<!-- footer-top -->
+   {% include "commonfootertop.html" %}
+	<!-- /footer-top -->
+
+<!-- footer -->
+    {% include "commonfooterdown.html" %}
+<!-- //footer -->
+<!-- bootstrap-modal-pop-up -->
+	<div class="modal video-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					Events
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				</div>
+					<div class="modal-body">
+						<img src={% static "images/g8.jpg"%} alt=" " class="img-responsive" />
+						<p>Ut enim ad minima veniam, quis nostrum
+							exercitationem ullam corporis suscipit laboriosam,
+							nisi ut aliquid ex ea commodi consequatur? Quis autem
+							vel eum iure reprehenderit qui in ea voluptate velit
+							esse quam nihil molestiae consequatur, vel illum qui
+							dolorem eum fugiat quo voluptas nulla pariatur.
+							<i>" Quis autem vel eum iure reprehenderit qui in ea voluptate velit
+								esse quam nihil molestiae consequatur.</i></p>
+					</div>
+			</div>
+		</div>
+	</div>
+<!-- //bootstrap-modal-pop-up -->
+<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+<script src={%static "js/jquery-2.2.3.min.js"%}></script>
+
+<!-- skills -->
+
+						<script src={%static "js/responsiveslides.min.js"%}></script>
+			<script>
+						// You can also use "$(window).load(function() {"
+						$(function () {
+						  // Slideshow 4
+						  $("#slider4").responsiveSlides({
+							auto: true,
+							pager:true,
+							nav:false,
+							speed: 500,
+							namespace: "callbacks",
+							before: function () {
+							  $('.events').append("<li>before event fired.</li>");
+							},
+							after: function () {
+							  $('.events').append("<li>after event fired.</li>");
+							}
+						  });
+
+						});
+			</script>
+			<script>
+								// You can also use "$(window).load(function() {"
+								$(function () {
+								  // Slideshow 4
+								  $("#slider3").responsiveSlides({
+									auto: true,
+									pager:false,
+									nav:true,
+									speed: 500,
+									namespace: "callbacks",
+									before: function () {
+									  $('.events').append("<li>before event fired.</li>");
+									},
+									after: function () {
+									  $('.events').append("<li>after event fired.</li>");
+									}
+								  });
+
+								});
+							 </script>
+
+<!-- start-smoth-scrolling -->
+<!-- OnScroll-Number-Increase-JavaScript -->
+	<script type="text/javascript" src={%static "js/numscroller-1.0.js"%}></script>
+<!-- //OnScroll-Number-Increase-JavaScript -->
+<!--flexiselDemo1 -->
+ <script type="text/javascript">
+							$(window).load(function() {
+								$("#flexiselDemo1").flexisel({
+									visibleItems: 2,
+									animationSpeed: 1000,
+									autoPlay: true,
+									autoPlaySpeed: 3000,
+									pauseOnHover: true,
+									enableResponsiveBreakpoints: true,
+									responsiveBreakpoints: {
+										portrait: {
+											changePoint:480,
+											visibleItems: 1
+										},
+										landscape: {
+											changePoint:640,
+											visibleItems: 1
+										},
+										tablet: {
+											changePoint:991,
+											visibleItems: 1
+										}
+									}
+								});
+
+							});
+			</script>
+			<script type="text/javascript" src={%static "js/jquery.flexisel.js"%}></script>
+<!--//flexiselDemo1 -->
+
+<script type="text/javascript" src={%static "js/move-top.js"%}></script>
+<script type="text/javascript" src={%static "js/easing.js"%}></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- start-smoth-scrolling -->
+	<script src={%static "js/bootstrap.js"%}></script>
+<!-- //for bootstrap working -->
+<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear'
+				};
+			*/
+
+			$().UItoTop({ easingType: 'easeOutQuart' });
+
+			});
+	</script>
+<!-- //here ends scrolling icon -->
+</body>
+</html>

@@ -1,0 +1,120 @@
+
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Events a Wedding Category Bootstrap Responsive website Template | Events :: w3layouts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Events Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+<link href={% static "css/bootstrap.css"%} type="text/css" rel="stylesheet" media="all">
+<link href={% static "css/style.css"%} type="text/css" rel="stylesheet" media="all">
+<link href={% static "css/font-awesome.css"%} rel="stylesheet">		<!-- font-awesome icons -->
+<!-- //Custom Theme files -->
+<!-- js -->
+<script src={% static "js/jquery-2.2.3.min.js"%}></script>
+<!-- //js -->
+<!-- web-fonts -->
+<link href="//fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<!-- //web-fonts -->
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+	<!-- banner -->
+	<div class="w3ls-banner-1">
+		<!-- banner-text -->
+
+	<!-- //banner -->
+			<!-- header -->
+		{% include "header_landowner.html" %}
+		<!-- //header -->
+	</div>
+	<!-- events -->
+	<!--Events -->
+		<div class="events-agileits-w3layouts">
+		<div class="container">
+		<h2 class="heading-agileinfo">NewYear Vanues<span>These are all Vanues for New Year Parties </span></h2>
+				<div class="popular-grids">
+
+                    {% for i in data %}
+                        <div class="col-md-4 popular-grid">
+						<img src="{{ i.6 }}" height="640px" width="425px" class="img-responsive" alt=""/>
+						<div class="popular-text">
+							<h5><a href="#" data-toggle="modal" data-target="#myModal2">{{ i.1 }}</a></h5>
+							<div class="detail-bottom">
+								<ul>
+									<li><i class="fa fa-calendar" aria-hidden="true"></i>30 May</li>
+									<li><i class="fa fa-map-marker" aria-hidden="true"></i>{{ i.2 }}</li>
+								</ul>
+								<p>Vanue Sqft : {{ i.3 }}</p>
+                                <p>Capacity : {{ i.4 }}</p>
+                                <p>Price per Hour : {{ i.5 }}</p>
+							</div>
+						</div>
+                    </div>
+                    {% endfor %}
+
+					<div class="clearfix"></div>
+				</div>
+		</div>
+		</div>
+<!-- //Events -->
+
+	<!-- //events -->
+<!-- footer-top -->
+	{% include "commonfootertop.html" %}
+    <!-- /footer-top -->
+
+<!-- footer -->
+			{% include "commonfooterdown.html" %}
+<!-- //footer -->
+<!-- bootstrap-modal-pop-up -->
+
+<!-- //bootstrap-modal-pop-up -->
+<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+<script src={% static "js/jquery-2.2.3.min.js"%}></script>
+
+<!-- skills -->
+<script type="text/javascript" src={% static "js/move-top.js"%}></script>
+<script type="text/javascript" src={% static "js/easing.js"%}></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- start-smoth-scrolling -->
+	<script src={% static "js/bootstrap.js"%}></script>
+<!-- //for bootstrap working -->
+<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear'
+				};
+			*/
+
+			$().UItoTop({ easingType: 'easeOutQuart' });
+
+			});
+	</script>
+<!-- //here ends scrolling icon -->
+</body>
+</html>

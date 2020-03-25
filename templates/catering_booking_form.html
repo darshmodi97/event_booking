@@ -1,0 +1,225 @@
+
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Events a Wedding Category Bootstrap Responsive website Template | Contact :: w3layouts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Events Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+<link href={% static "css/bootstrap.css"%} type="text/css" rel="stylesheet" media="all">
+<link href={% static "css/style.css"%} type="text/css" rel="stylesheet" media="all">
+<link href={% static "css/font-awesome.css"%} rel="stylesheet">		<!-- font-awesome icons -->
+<!-- //Custom Theme files -->
+<!-- js -->
+<script src={% static "js/jquery-2.2.3.min.js"%}></script>
+<!-- //js -->
+<!-- web-fonts -->
+<link href="//fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<!-- //web-fonts -->
+
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+{% csrf_token %}
+	<!-- banner -->
+    {% include "header_client.html" %}
+<!-- contact -->
+<script>
+    function validate_date() {
+        var date = document.getElementById('date').value;
+        var date1 = new Date(date);
+        var cur_date = new Date();
+
+        if (date1 <= cur_date)
+        {   var msg = "*Please Enter valid Date ";
+            document.getElementById('msg').style.color ="red";
+            document.getElementById('msg').innerHTML = msg;
+            document.getElementById('mysubmit').disabled = true;
+        }
+        else
+        {
+            document.getElementById('msg').innerHTML = "";
+            document.getElementById('mysubmit').disabled = false;
+        }
+    }
+
+
+</script>
+
+        <section class="about_agile" style="margin-top: 20px">
+		<div class="container">
+            <h3 class="heading-agileinfo white-w3ls" style="margin-top: 30px">Catering Booking<span class="black-w3ls">Here You can Book Caterers for Your Event</span></h3>
+			<div class="about-grids">
+
+				<div class="abt-rt-grid">
+					<div class="w3ls-grid-head text-center">
+						<h3>Caterer Booking Form </h3>
+					</div>
+					<div class="abt-form text-center">
+
+						<form  action="client_book_caterer" method="post" >
+							<div class="col-sm-4 col-xs-4 w3ls-lt-form">
+								<div class="w3ls-pr">
+                                    <h4>Caterer name</h4>
+                                    <input type="text" name="name" placeholder="Name" value="{{ data.0 }}" readonly>
+                                   <h4>Caterer GST No</h4>
+                                    <input type="text" name="gstno" placeholder="Food type" value="{{ data.2 }}" readonly>
+								</div>
+							</div>
+
+							<div class="col-sm-4 col-xs-4 w3ls-lt-form">
+								<div class="w3ls-pr">
+                                    <h4>Caterer Mobile Number</h4>
+									<input type="tel" name="mobile" placeholder="Mobile number" value="{{ data.1 }}" required="required" readonly>
+                                    <h4>No of person</h4>
+                                    <input type="text" name="person" id="per" required="required">
+
+								</div>
+							</div>
+							<div class="col-sm-4 col-xs-4 w3ls-lt-form">
+								<div class="w3ls-pr">
+
+                                    <h4>Price of Dish</h4>
+                                    <input type="text" name="price" placeholder="price of Dish" value="{{ data.3 }}" readonly>
+                                   <h4>Preparation Date</h4>
+                                   <input type="date" name="preparationdate" id="date" onchange="validate_date()" required="required">
+                                    <div id="msg"></div>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<input type="submit" value="Book Caterer" id="mysubmit">
+						</form>
+                            {% if msg %}
+                        <h4> Message : {{ msg }}</h4>
+                        {% endif %}
+                        <div ><p id="divprblm"></p> </div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+			<div class="clearfix"> </div>
+
+	</div>
+
+</div>
+
+<!-- //contact -->
+<!-- footer-top -->
+	{% include "commonfootertop.html" %}
+    <!-- /footer-top -->
+
+<!-- footer -->
+			{% include "commonfooterdown.html" %}
+<!-- //footer -->
+<!-- bootstrap-modal-pop-up -->
+	<div class="modal video-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					Events
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				</div>
+					<div class="modal-body">
+						<img src={% static "images/g8.jpg"%} alt=" " class="img-responsive" />
+						<p>Ut enim ad minima veniam, quis nostrum
+							exercitationem ullam corporis suscipit laboriosam,
+							nisi ut aliquid ex ea commodi consequatur? Quis autem
+							vel eum iure reprehenderit qui in ea voluptate velit
+							esse quam nihil molestiae consequatur, vel illum qui
+							dolorem eum fugiat quo voluptas nulla pariatur.
+							<i>" Quis autem vel eum iure reprehenderit qui in ea voluptate velit
+								esse quam nihil molestiae consequatur.</i></p>
+					</div>
+			</div>
+		</div>
+	</div>
+<!-- //bootstrap-modal-pop-up -->
+<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+
+<script>
+        function myajax() {
+             var date =  document.getElementById("date").value;
+             var person = document.getElementById("per").value;
+             var url ="client_book_caterer?preparationdate="+date+"&person="+person;
+             alert(url);
+
+          //   var xmlHttp = new XMLHttpRequest();
+           if(window.XMLHttpRequest)
+           {
+               xmlHttp = new XMLHttpRequest();
+           }
+           else
+           {
+               xmlHttp = new ActiveXObject();
+           }
+            xmlHttp.onreadystatechange = function()
+            {
+                /*xmlHttp.readyState == 4 bcz we need data in xmlHttp format
+                *and for this process there are 4 steps
+                *1.request send 2.acknowledgement for request
+                *3.data procession 4.response
+                */
+
+                if(this.readyState == 4 && this.status == 200)
+                {
+                    document.getElementById("divprblm").innerHTML = xmlHttp.responseText;
+                }
+            };
+            xmlHttp.open("GET",url,true); //get=method, filename , true = asynchronus process, false=synchronous process
+            xmlHttp.send();
+        }
+    </script>
+
+
+<script src={% static "js/jquery-2.2.3.min.js"%}></script>
+
+<!-- skills -->
+<script type="text/javascript" src={% static "js/move-top.js"%}></script>
+<script type="text/javascript" src={% static "js/easing.js"%}></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- start-smoth-scrolling -->
+	<script src={% static "js/bootstrap.js"%}></script>
+<!-- //for bootstrap working -->
+<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear'
+				};
+			*/
+
+			$().UItoTop({ easingType: 'easeOutQuart' });
+
+			});
+
+
+	</script>
+<!-- //here ends scrolling icon -->
+</body>
+</html>

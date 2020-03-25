@@ -1,0 +1,236 @@
+
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Events a Wedding Category Bootstrap Responsive website Template | Contact :: w3layouts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Events Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- Custom Theme files -->
+<link href={% static "css/bootstrap.css"%} type="text/css" rel="stylesheet" media="all">
+<link href={% static "css/style.css"%} type="text/css" rel="stylesheet" media="all">
+<link href={% static "css/font-awesome.css"%} rel="stylesheet">		<!-- font-awesome icons -->
+<!-- //Custom Theme files -->
+<!-- js -->
+<script src={% static "js/jquery-2.2.3.min.js"%}></script>
+<!-- //js -->
+<!-- web-fonts -->
+<link href="//fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<!-- //web-fonts -->
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+{% csrf_token %}
+	<!-- banner -->
+    {% include "commonmenu.html" %}
+<!-- contact -->
+	<div class="w3ls_address_mail_footer_grids" >
+	<div class="container">
+
+        <br><br><br>
+        <br>
+	<h2 class="heading-agileinfo">Register As Client<span>Events is a professionally managed Event</span></h2>
+
+		<div class="col-md-6 contact-form">
+
+				<h4 class="white-w3ls">Registration Form</h4>
+				<form action="client_dashboard" method="post">
+					<div class="styled-input agile-styled-input-top">
+						<input type="text" name="Name" required="">
+						<label>Name</label>
+						<span></span>
+					</div>
+                    <div class="styled-input agile-styled-input-top">
+						<input type="number" name="mobile"id="mobile" onkeyup="validatemobile()" required="" style="    font-size: 15px;
+                                        letter-spacing: 1px;
+                                        color: #fff;
+                                        padding: 0.5em 1em 0.5em 0;
+                                        border: 0;
+                                        width: 100%;
+                                        border-bottom: 1px solid #dcdcdc;
+                                        background: none;
+                                        -webkit-appearance: none;
+                                        outline: none;">
+						<label>Contact Number</label>
+                        <div id="message"></div>
+						<span></span>
+					</div>
+                    <div class="styled-input agile-styled-input-top">
+						<input type="text" name="username" required="" style="    font-size: 15px;
+                                        letter-spacing: 1px;
+                                        color: #fff;
+                                        padding: 0.5em 1em 0.5em 0;
+                                        border: 0;
+                                        width: 100%;
+                                        border-bottom: 1px solid #dcdcdc;
+                                        background: none;
+                                        -webkit-appearance: none;
+                                        outline: none;">
+						<label>Username</label>
+						<span></span>
+					</div>
+                    <div class="styled-input agile-styled-input-top">
+						<input type="password" name="password" id="pass" required="" style="    font-size: 15px;
+                                        letter-spacing: 1px;
+                                        color: #fff;
+                                        padding: 0.5em 1em 0.5em 0;
+                                        border: 0;
+                                        width: 100%;
+                                        border-bottom: 1px solid #dcdcdc;
+                                        background: none;
+                                        -webkit-appearance: none;
+                                        outline: none;">
+						<label>Password</label>
+						<span></span>
+					</div>
+					<div class="styled-input agile-styled-input-top">
+						<input type="password" name="cpassword" id="cpass" onkeyup="validatepassword()" required="" style="    font-size: 15px;
+                                        letter-spacing: 1px;
+                                        color: #fff;
+                                        padding: 0.5em 1em 0.5em 0;
+                                        border: 0;
+                                        width: 100%;
+                                        border-bottom: 1px solid #dcdcdc;
+                                        background: none;
+                                        -webkit-appearance: none;
+                                        outline: none;">
+						<label>Confirm Password</label>
+                        <div id="cp"></div>
+						<span></span>
+					</div>
+
+					<input type="submit" value="Submit" id="mysubmit">
+				</form>
+
+			</div>
+
+			<div class="clearfix"> </div>
+
+	</div>
+
+</div>
+<!-- //contact -->
+<!-- footer-top -->
+	{% include "commonfootertop.html" %}
+    <!-- /footer-top -->
+
+<!-- footer -->
+			{% include "commonfooterdown.html" %}
+<!-- //footer -->
+<!-- bootstrap-modal-pop-up -->
+	<div class="modal video-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					Events
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				</div>
+					<div class="modal-body">
+						<img src={% static "images/g8.jpg"%} alt=" " class="img-responsive" />
+						<p>Ut enim ad minima veniam, quis nostrum
+							exercitationem ullam corporis suscipit laboriosam,
+							nisi ut aliquid ex ea commodi consequatur? Quis autem
+							vel eum iure reprehenderit qui in ea voluptate velit
+							esse quam nihil molestiae consequatur, vel illum qui
+							dolorem eum fugiat quo voluptas nulla pariatur.
+							<i>" Quis autem vel eum iure reprehenderit qui in ea voluptate velit
+								esse quam nihil molestiae consequatur.</i></p>
+					</div>
+			</div>
+		</div>
+	</div>
+<!-- //bootstrap-modal-pop-up -->
+<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+
+<script src={% static "js/jquery-2.2.3.min.js"%}></script>
+
+<!-- skills -->
+<script type="text/javascript" src={% static "js/move-top.js"%}></script>
+<script type="text/javascript" src={% static "js/easing.js"%}></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- start-smoth-scrolling -->
+	<script src={% static "js/bootstrap.js"%}></script>
+<!-- //for bootstrap working -->
+<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear'
+				};
+			*/
+
+			$().UItoTop({ easingType: 'easeOutQuart' });
+
+			});
+	</script>
+<!-- //here ends scrolling icon -->
+<!-- form validation -->
+ <script>
+    debugger;
+    var count = 0;
+        function validatemobile() {
+        debugger;
+            var mobile = document.getElementById("mobile");
+            var msg = document.getElementById("message");
+            var goodColor = "#0C6";
+            var badColor = "red";
+
+            if (mobile.value.length != 10) {
+                document.getElementById('mysubmit').disabled = true;
+                msg.style.color = badColor;
+                msg.innerHTML = "required 10 digits !"
+                count++;
+            }
+            else {
+                count = 0;
+                mobile.style.backgroundColor = "#181919";
+                {#message.style.color = goodColor;#}
+                message.innerHTML = "";
+                 document.getElementById('mysubmit').disabled = false;
+            }
+        }
+
+        function validatepassword() {
+            debugger;
+            var pass = document.getElementById('pass').value;
+
+            var conpass = document.getElementById('cpass').value;
+            var msg = document.getElementById('cp');
+            if (pass != conpass) {
+                document.getElementById('mysubmit').disabled = true;
+                msg.style.color = "red";
+                msg.innerHTML = "password and confirm password is not same";
+                count++;
+            } else {
+
+                count = 0;
+                msg.innerHTML = "";
+                document.getElementById('mysubmit').disabled = false;
+            }
+        }
+
+</script>
+
+</body>
+</html>
