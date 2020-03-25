@@ -1,2 +1,2 @@
- .idea/
  __pycache__/
+software.txt
