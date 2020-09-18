@@ -64,6 +64,7 @@ urlpatterns=[
     url('get_gujarati_caterer',views.get_gujarati_caterer,name='get_gujarati_caterer'),
     url('get_italian_caterer',views.get_italian_caterer,name='get_italian_caterer'),
     url('get_maxican_caterer',views.get_maxican_caterer,name='get_maxican_caterer'),
+    url('checkdate',views.checkdate,name='checkdate'),
     url('catering_booking',views.catering_booking,name='catering_booking'),
     url('client_book_caterer',views.client_book_caterer,name='client_book_caterer'),
     url('booked_caterer',views.booked_caterer,name='booked_caterer'),

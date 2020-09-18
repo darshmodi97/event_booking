@@ -49,7 +49,7 @@ def header_admin(request):
     return render(request,'admin_dashboard.html')
 
 def giveconnect(request):
-    conn = mysql.connector.connect(host='localhost', database='event_booking', user='root', password='root')
+    conn = mysql.connector.connect(host='localhost', database='event_booking', user='root', password='root',auth_plugin='mysql_native_password')
     return conn
 
 def client_dashboard(request):
@@ -1097,12 +1097,57 @@ def catering_booking(request):
     else:
         return render(request, 'login.html')
 
+
+def checkdate(request):
+    try:
+        conn = giveconnect(request)
+        cursor = conn.cursor()
+        if request.session.get('login_id') is not None:
+            preparation_date = request.POST.get('preparationdate')
+            person = int(request.POST.get('person'))
+            lid = int(request.session.get('login_id'))
+            request.session['preparation_date'] = preparation_date
+            caterer_id = request.session.get('caterer_id')
+            category_id = int(request.session.get('catering_category_id'))
+            print(category_id)
+            query = "select client_reg.client_id from client_reg where login_id = %d;" % (lid)
+            cursor.execute(query)
+            rows = cursor.fetchone()
+            print("Client id ", rows[0])
+            qu = "select catering_cater_map_id from catering_category_mapping " \
+                 "where catering_owner_id = %d and catering_category_id =%d" % (caterer_id, category_id)
+            cursor.execute(qu)
+            r = cursor.fetchone()
+
+            request.session['catering_category_map_id'] = r[0]
+
+            q = "select date from catering_booking where date = '%s' and catering_category_map_id = %d" % (
+                preparation_date, r[0])
+            cursor.execute(q)
+            row = cursor.fetchall()
+            print("date ", row)
+
+            if row:
+                reply = "Sorry, caterer is not Available for that day .."
+                print("failure msg:", reply)
+                return HttpResponse(reply)
+            else:
+                reply = "Caterer is Available for that day .."
+                return HttpResponse(reply)
+
+    except Error as e:
+        print(e)
+    finally:
+        cursor.close()
+        conn.close()
+
+
+
 def client_book_caterer(request):
     try:
        conn = giveconnect(request)
        cursor = conn.cursor()
        if request.session.get('login_id') is not None:
-
 
             preparation_date = request.POST.get('preparationdate')
             print("preparation date : ",preparation_date)
@@ -1111,7 +1156,6 @@ def client_book_caterer(request):
             print("person : ", person)
 
             lid = int(request.session.get('login_id'))
-
             print("login id ", lid)
 
             request.session['preparation_date'] = preparation_date
@@ -1132,40 +1176,29 @@ def client_book_caterer(request):
 
             request.session['catering_category_map_id'] = r[0]
 
-            q = "select date from catering_booking where date = '%s' and catering_category_map_id = %d" % (
-            preparation_date, r[0])
-            cursor.execute(q)
-            row = cursor.fetchall()
-            print("date ", row)
 
-            if row:
-                reply = "caterer is not Available for that day .."
-                print("failure msg:", reply)
-                return render(request, 'catering_booking_form.html', {'msg': reply})
-                # return HttpResponse(reply)
-            else:
 
-                query1 = "insert into catering_booking (booked_by_client_id,catering_category_map_id,date,number_of_person) " \
-                         "values (%d,%d,'%s',%d)" % (rows[0], r[0], preparation_date, person)
-                cursor.execute(query1)
-                conn.commit()
-                catering_booking_id = cursor.lastrowid
-                request.session['catering_booking_id'] = catering_booking_id
-                msg = "Caterer Booked Successfully .."
-                query2 = "select sum(tbl.amount), tbl.dd " \
-                         "from (select (catering_booking.number_of_person * catering_category.price) as amount," \
-                         " catering_booking.date as dd " \
-                         "from catering_booking " \
-                         "join catering_category_mapping on catering_booking.catering_category_map_id = catering_category_mapping.catering_cater_map_id " \
-                         "join catering_category on catering_category.catering_cat_id = catering_category_mapping.catering_category_id " \
-                         "where catering_booking.booked_by_client_id =%d and catering_booking.status = 'pending' and catering_booking.date ='%s') as tbl " \
-                         "group by tbl.dd" % (rows[0], preparation_date)
-                cursor.execute(query2)
-                r1 = cursor.fetchone()
-                catering_cost = r1[0]
-                request.session['f'] = 2
-                print("done")
-                return payment(request, 0, catering_cost)
+            query1 = "insert into catering_booking (booked_by_client_id,catering_category_map_id,date,number_of_person) " \
+                     "values (%d,%d,'%s',%d)" % (rows[0], r[0], preparation_date, person)
+            cursor.execute(query1)
+            conn.commit()
+            catering_booking_id = cursor.lastrowid
+            request.session['catering_booking_id'] = catering_booking_id
+
+            query2 = "select sum(tbl.amount), tbl.dd " \
+                     "from (select (catering_booking.number_of_person * catering_category.price) as amount," \
+                     " catering_booking.date as dd " \
+                     "from catering_booking " \
+                     "join catering_category_mapping on catering_booking.catering_category_map_id = catering_category_mapping.catering_cater_map_id " \
+                     "join catering_category on catering_category.catering_cat_id = catering_category_mapping.catering_category_id " \
+                     "where catering_booking.booked_by_client_id =%d and catering_booking.status = 'pending' and catering_booking.date ='%s') as tbl " \
+                     "group by tbl.dd" % (rows[0], preparation_date)
+            cursor.execute(query2)
+            r1 = cursor.fetchone()
+            catering_cost = r1[0]
+            request.session['f'] = 2
+            print("done")
+            return payment(request, 0, catering_cost)
 
        else:
             return render(request, 'login.html')

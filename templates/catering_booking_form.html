@@ -38,9 +38,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- contact -->
 <script>
     function validate_date() {
+
         var date = document.getElementById('date').value;
+        var person = document.getElementById('person').value
         var date1 = new Date(date);
         var cur_date = new Date();
+        var url ="checkdate_catering_booking"
+        var body = "preparationdate="+date+"&person="+person;
+
 
         if (date1 <= cur_date)
         {   var msg = "*Please Enter valid Date ";
@@ -50,8 +55,37 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         }
         else
         {
-            document.getElementById('msg').innerHTML = "";
-            document.getElementById('mysubmit').disabled = false;
+            xmlHttp = new XMLHttpRequest();
+            xmlHttp.onreadystatechange = function()
+            {
+                /*xmlHttp.readyState == 4 bcz we need data in xmlHttp format
+                *and for this process there are 4 steps
+                *1.request send 2.acknowledgement for request
+                *3.data procession 4.response
+                */
+
+                if(this.readyState == 4 && this.status == 200)
+                {
+                    if (xmlHttp.responseText == "Sorry, caterer is not Available for that day ..")
+                    {
+                        document.getElementById('msg').style.color ="red";
+                        document.getElementById("msg").innerHTML = xmlHttp.responseText;
+                        document.getElementById('mysubmit').disabled = true;
+                    }
+                    else{
+                        document.getElementById('msg').style.color ="green";
+                        document.getElementById("msg").innerHTML = xmlHttp.responseText;
+                        document.getElementById('mysubmit').disabled = false;
+                    }
+
+                }
+            };
+            xmlHttp.open("post",url,true); //post=method, filename , true = asynchronus process, false=synchronous process
+            xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // this line important to make post request
+            xmlHttp.send(body);
+
+            {#document.getElementById('msg').innerHTML = "";#}
+            {#document.getElementById('mysubmit').disabled = false;#}
         }
     }
 
@@ -84,7 +118,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     <h4>Caterer Mobile Number</h4>
 									<input type="tel" name="mobile" placeholder="Mobile number" value="{{ data.1 }}" required="required" readonly>
                                     <h4>No of person</h4>
-                                    <input type="text" name="person" id="per" required="required">
+                                    <input type="text" name="person" id="person" required="required">
 
 								</div>
 							</div>
@@ -150,40 +184,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- //bootstrap-modal-pop-up -->
 <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 
-
-<script>
-        function myajax() {
-             var date =  document.getElementById("date").value;
-             var person = document.getElementById("per").value;
-             var url ="client_book_caterer?preparationdate="+date+"&person="+person;
-             alert(url);
-
-          //   var xmlHttp = new XMLHttpRequest();
-           if(window.XMLHttpRequest)
-           {
-               xmlHttp = new XMLHttpRequest();
-           }
-           else
-           {
-               xmlHttp = new ActiveXObject();
-           }
-            xmlHttp.onreadystatechange = function()
-            {
-                /*xmlHttp.readyState == 4 bcz we need data in xmlHttp format
-                *and for this process there are 4 steps
-                *1.request send 2.acknowledgement for request
-                *3.data procession 4.response
-                */
-
-                if(this.readyState == 4 && this.status == 200)
-                {
-                    document.getElementById("divprblm").innerHTML = xmlHttp.responseText;
-                }
-            };
-            xmlHttp.open("GET",url,true); //get=method, filename , true = asynchronus process, false=synchronous process
-            xmlHttp.send();
-        }
-    </script>
 
 
 <script src={% static "js/jquery-2.2.3.min.js"%}></script>
