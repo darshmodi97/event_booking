@@ -1,3 +1,4 @@
 .idea/
+__pycache__/
 Dump20191216.sql
 db.sqlite3
