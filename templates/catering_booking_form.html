@@ -43,8 +43,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         var person = document.getElementById('person').value
         var date1 = new Date(date);
         var cur_date = new Date();
-        var url ="checkdate_catering_booking"
-        var body = "preparationdate="+date+"&person="+person;
+        var url ="checkdate"
+        var body = "preparationdate="+date+"&person="+person+"&csrfmiddlewaretoken={{ csrf_token }}"; //compulsory to add csrf token for post request;
 
 
         if (date1 <= cur_date)
@@ -84,8 +84,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // this line important to make post request
             xmlHttp.send(body);
 
-            {#document.getElementById('msg').innerHTML = "";#}
-            {#document.getElementById('mysubmit').disabled = false;#}
+            document.getElementById('msg').innerHTML = "";
+            document.getElementById('mysubmit').disabled = false;
         }
     }
 
@@ -103,7 +103,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 					<div class="abt-form text-center">
 
-						<form  action="client_book_caterer" method="post" >
+						<form  action="client_book_caterer" method="post" >{% csrf_token %}
 							<div class="col-sm-4 col-xs-4 w3ls-lt-form">
 								<div class="w3ls-pr">
                                     <h4>Caterer name</h4>

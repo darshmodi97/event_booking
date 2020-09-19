@@ -231,7 +231,6 @@ def signin(request):
 
 def logout(request):
     request.session.clear()
-
     return render(request,'login.html')
 
 def forget(request):
