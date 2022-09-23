@@ -27,7 +27,7 @@ mysql-connector-async-dd==2.0.2
 mysql-connector-python==8.0.17
 mysql-connector-python-dd==2.0.2
 Pillow==6.2.0
-protobuf==3.9.1
+protobuf==3.18.3
 psycopg2==2.8.4
 PyMySQL==0.9.3
 pypng==0.0.20
